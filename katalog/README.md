@@ -6,7 +6,7 @@ https://beaston-tugas-2.herokuapp.com/
 
 ## Alur Program
 
-GAMBAR DISINI
+![Bagan Proses](/images/bagan-proses.png)
 
 Pertama, client yang mengakses akan diarahkan requestnya sesuai dengan yang tersedia pada routes (urls.py). Jika URL yang diminta tersedia maka fungsinya yang sesuai pada views.py akan dipanggil. Pemanggilan fungsi tersebut akan melakukan query yang membutuhkan data dari models.py. Data tersebut diambil dari database (dari file .json dalam kasus ini). Setelah query didapatkan dari models, maka akan diteruskan kembali ke views, yang kemudian akan direspons kembali ke client melalui pemetaan HTML berdasarkan hasil proses sebelumnya.
 

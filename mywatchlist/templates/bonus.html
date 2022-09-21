@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>BONUS</h1>
+  <h2>Tugas 3 PBP</h2>
+
+  <h5>Name: </h5>
+  <b>{{nama}}</b>
+
+  <h5>Student ID: </h5>
+  <b>{{student_id}}</b>
+
+  <br>
+  <br>
+
+  <h3>BONUS</h3>
+
+  <h4>Jumlah film ditonton: {{ films_watched }}</h4>
+  <h4>Jumlah film belum ditonton: {{ films_not_watched }}</h4>
+  {% if films_watched >= films_not_watched %}
+    <h4>Selamat, kamu sudah banyak menonton!</h4>
+  {% else %}
+    <h4>Wah, kamu masih sedikit menonton!</h4>
+  {% endif %}
+
+ {% endblock content %}

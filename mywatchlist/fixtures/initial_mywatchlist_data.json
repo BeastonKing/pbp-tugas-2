@@ -1,0 +1,133 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "Sudah",
+            "title": "The Shawshank Redemption",
+            "rating": 4,
+            "release_date": "22 September 1994",
+            "review": "Salah satu film lawas yang sangat enjoyable untuk ditonton. Acting dan storynya bagus sekali."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Star Wars: The Rise of Skywalker",
+            "rating": 1,
+            "release_date": "18 Desember 2019",
+            "review": "Membakar uang sepertinya lebih menghibur untuk disaksikan dibandingkan menonton film ini."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Saving Private Ryan",
+            "rating": 5,
+            "release_date": "5 Desember 1998",
+            "review": "Sangat menggambarkan pengalaman menyelamatkan seorang prajurit saat masa peperangan yang mencekamkan. Tom Hanks 10/10."
+        }
+    },
+    
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "Belum",
+            "title": "V for Vendetta",
+            "rating": 1,
+            "release_date": "16 Maret 2006",
+            "review": "Belum pernah menonton tapi katanya bagus. Bintang 1 dulu, kalau bagus nanti dinaikkin jadi bintang 5."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "Sudah",
+            "title": "The Batman",
+            "rating": 5,
+            "release_date": "2 Maret 2022",
+            "review": "Something in the way, hmmmmmmmmmmmmmmm."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "Belum",
+            "title": "Mortal Kombat",
+            "rating": 1,
+            "release_date": "14 April 2021",
+            "review": "Belum pernah menonton. Tapi keren ada Joe Taslim #AkuCintaIndonesia #AdaIndonesiaCuy"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "Sudah",
+            "title": "A Silent Voice",
+            "rating": 5,
+            "release_date": "3 Mei 2017",
+            "review": "Satu-satunya film anime yang pernah ditonton dan juga merupakan salah satu dari 10 film terbaik yang pernah ditonton."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Bumi Manusia",
+            "rating": 2,
+            "release_date": "15 Agustus 2019",
+            "review": "Bosen, bikin ngantuk. Mending turu aja bos."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Avengers: Endgame",
+            "rating": 5,
+            "release_date": "24 April 2019",
+            "review": "Penutup fase 3 Marvel yang sempurna. Semua build-up film-film sebelumnya begitu terasa di sini."
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Joker",
+            "rating": 5,
+            "release_date": "2 Oktober 2019",
+            "review": "'We live in a society' ~Albert Einstein (sepertinya)"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 11,
+        "fields": {
+            "watched": "Sudah",
+            "title": "1917",
+            "rating": 5,
+            "release_date": "18 Januari 2020",
+            "review": "Pengambilan scene yang one long shot sangat keren sekali untuk ditonton. Benedict Cumberbatch 10/10"
+        }
+    }
+]

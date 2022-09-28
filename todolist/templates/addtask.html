@@ -1,0 +1,10 @@
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    <p>User yang terlogin saat ini: {{ user.get_username }}</p>
+    {% endif %}
+    {{form}}
+
+
+    <button>Submit Task</button>
+</form>

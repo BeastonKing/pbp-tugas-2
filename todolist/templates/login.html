@@ -6,39 +6,35 @@
 
 {% block content %}
 
-<div class = "login">
+<div class = "login container-login">
 
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
+    <div class="shadow-lg content-login d-flex flex-column justify-content-center align-items-center">
+        <h1>Login</h1>
         
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+    
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="input-login d-flex flex-column flex-wrap justify-content-center align-items-center">
+                <span>Username: <input type="text" name="username" placeholder="Username" class="form-control"></span>
+                <span class="mb-2">Password: <input type="password" name="password" placeholder="Password" class="form-control"></span>
+                <input class="btn login_btn btn-success" type="submit" value="Login">
+            </div>
+        </form>
+    
+    
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red; font-weight: bold;" class="m-0">{{ message }}</p>
+            {% endfor %}
+            
+        {% else %}
+            <p></p>
+        {% endif %}     
+    
+            
+        <span> Don't have an account? <a href="{% url 'todolist:register' %}" class="fw-bold text-decoration-none">Register!</a> </span>
+    </div>
+
 
 </div>
 

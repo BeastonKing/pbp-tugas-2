@@ -33,7 +33,7 @@ def add_task(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-        return HttpResponseRedirect('/todolist')
+            return HttpResponseRedirect('/todolist')
     else:
         form = TaskForm()
 

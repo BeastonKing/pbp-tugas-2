@@ -6,28 +6,29 @@
 
 {% block content %}  
 
-<div class = "login">
+<div class = "login container-register">
     
-    <h1>Formulir Registrasi</h1>  
+    <div class="content-register d-flex flex-column justify-content-center align-items-center">
+        <h1 class="mb-5">Formulir Registrasi</h1>  
+    
+            <form method="POST" class="d-flex flex-column justify-content-center align-items-center mb-2" >  
+                {% csrf_token %}  
+                <table class="table">  
+                    {{ form.as_table }}  
+                </table>
+                <input type="submit" name="submit" value="Register" class="btn btn-primary"> 
+            </form>
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+            <span> Have an account already? <a href="{% url 'todolist:login' %}" class="fw-bold text-decoration-none">Login!</a> </span>
+    
+        {% if messages %}  
+            <ul>   
+                {% for message in messages %}  
+                    <li>{{ message }}</li>  
+                    {% endfor %}  
+            </ul>   
+        {% endif %}
+    </div>
 
 </div>  
 

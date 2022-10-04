@@ -13,7 +13,8 @@
   <br>
 
   {% if user.is_authenticated %}
-    <h5>User yang terlogin saat ini: {{ user.get_username }}</h5>
+    <h5>Hello, {{ user.get_username }}!</h5>
+    <h5>Welcome to Todolist!</h5>
   {% endif %}
 
   <table>

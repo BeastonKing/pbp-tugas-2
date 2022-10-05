@@ -47,7 +47,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Akun telah berhasil dibuat!')
+            messages.success(request, 'Account has been successfully created!')
             return redirect('todolist:login')
     
     context = {'form':form}
@@ -64,7 +64,7 @@ def login_user(request):
             response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
             return response
         else:
-            messages.info(request, 'Username atau Password salah!')
+            messages.info(request, 'Wrong Username or Password!')
     context = {}
     return render(request, 'login.html', context)
 

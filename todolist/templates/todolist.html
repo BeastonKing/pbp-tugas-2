@@ -1,41 +1,83 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+<title>Todolist</title>
+{% endblock meta %}
+
  {% block content %}
+ 
+ <nav class="navbar sticky-top shadow" style="background-color: #47B5FF;">
+   <div class="container-fluid ms-3 me-3">
+     <a class="navbar-brand fs-3 fw-bold" href="#" style="font-family: 'Poppins', sans-serif;">Todolist</a>
+     <div class="navigation-buttons">
+       <a class="btn btn-success me-2" href="{% url 'todolist:add_task' %}">Add Task</a>
+       <a class="btn btn-danger" href="{% url 'todolist:logout' %}">Logout</a>
+     </div>
+   </div>
+ </nav>
+ <div class="container-todolist d-flex flex-column justify-content-between align-items-center">
+  
+    <div class="content-todolist pt-5 pb-5 d-flex flex-column align-items-center">
+      <div class="welcome">
+        {% if user.is_authenticated %}
+          <span>Hello, <span class="fst-italic fw-bolder me-1" style="color: lightgreen;">{{ user.get_username }}</span>!</span>
+          <span>Welcome to your <span style="font-family: 'Poppins', sans-serif;">Todolist!</span></span>
+        {% endif %}
+      </div>
+    
+      {% comment %}
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Description</th>
+        </tr>
+    
+        {% for task in list_task %}
+        <tr>
+            <th>{{task.user}}</th>
+            <th>{{task.date}}</th>
+            <th>{{task.title}}</th>
+            <th>{{task.description}}</th>
+        </tr>
+      {% endfor %}
+      </table>
+      {% endcomment %}
 
-  <h2>Tugas 4 PBP</h2>
 
-  <h5>Name: </h5>
-  <b>{{nama}}</b>
+  
+      {% if list_task %}
+        <div class="container-cards">
+          {% for task in list_task %}
+          <div class="card p-1">
+            <div class="card-body d-flex flex-column justify-content-between gap-2">
+              <div class="card-content">
+                <h5 class="card-title">{{task.title}}</h5>
+                <p class="card-text">{{task.description}}</p>
+              </div>
+              <p class="card-text fst-italic">{{task.date}}</p>
+            </div>
+          </div>
+          
+          {% endfor %}
+        </div>
+        
 
-  <h5>NPM: </h5>
-  <b>{{npm}}</b>
+      {% else %}
+        <span style="color: white; font-weight: bold;">You currently have no task.</span>
+      {% endif %}
+      
+ 
+    </div>
 
-  <br>
 
-  {% if user.is_authenticated %}
-    <h5>Hello, {{ user.get_username }}!</h5>
-    <h5>Welcome to Todolist!</h5>
-  {% endif %}
+    <div class="todolist-footer">
+      <span>Made by: {{nama}} - {{npm}}</span>
+      <span>As part of PBP Assignment #5</span>
+    </div>  
+    
+  </div>
 
-  <table>
-    <tr>
-      <th>Username</th>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for task in list_task %}
-    <tr>
-        <th>{{task.user}}</th>
-        <th>{{task.date}}</th>
-        <th>{{task.title}}</th>
-        <th>{{task.description}}</th>
-    </tr>
-  {% endfor %}
-  </table>
-
-  <button><a href="{% url 'todolist:add_task' %}">Add Task</a></button>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
 
  {% endblock content %}

@@ -22,7 +22,18 @@
 
 .container-login, .container-register {
     min-height: 100vh;
-    min-width: 380px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2D3142;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-addtask {
+    min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,11 +41,20 @@
     background-color: #2D3142;
 }
 
-.content-login {
+.content-login{
     min-width: 380px;
-    width: 400px;
+    padding: 10px;
     height: 400px;
-    background-color: #B0D7FF;
+    background-color: #b0d7ff;
+    border: 4px solid black;
+    border-radius: 8px;
+    gap: 15px;
+}
+.content-addtask {
+    min-width: 380px;
+    padding: 30px 20px;
+    height: 500px;
+    background-color: #929095;
     border: 4px solid black;
     border-radius: 8px;
     gap: 15px;
@@ -48,7 +68,61 @@
     border-radius: 8px;
 }
 
-
 .input-login {
     gap: 12px;
+}
+
+.input-task input[type=text] {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 12px 20px;
+}
+
+.container-todolist {
+    min-height: 100vh;
+    background-color: #2D3142;
+}
+
+.todolist-footer {
+    height: 100px;
+    width: 100%;
+    background-color: #DFF6FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.welcome {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.content-todolist {
+    min-height: 80vh;
+    gap: 30px;
+}
+
+.container-cards {
+    min-width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card.p-1 {
+    width: 300px; 
+    background-color: #D8D5DB;
+    border: 3px solid black;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.card:hover {
+    background-color: #ADACB5;
+    border: 3px solid #47B5FF;
 }

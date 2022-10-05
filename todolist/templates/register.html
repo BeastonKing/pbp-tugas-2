@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Registrasi Akun</title>
+<title>Account Registration</title>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login container-register">
+<div class = "login container-register" >
     
     <div class="content-register d-flex flex-column justify-content-center align-items-center">
-        <h1 class="mb-5">Formulir Registrasi</h1>  
+        <h1 class="mb-5">Registration Form</h1>  
     
             <form method="POST" class="d-flex flex-column justify-content-center align-items-center mb-2" >  
                 {% csrf_token %}  

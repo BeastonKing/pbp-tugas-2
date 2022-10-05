@@ -18,13 +18,13 @@ External CSS adalah styling CSS dengan membuat file eksternal berekstensi .css y
 Terdapat sekumpulan tag HTML5 dengan kegunaannya masing-masing. Beberapa tag tersebut yang saya ketahui yaitu adalah `<head></head>` untuk head HTML, `<body></body>` untuk body HTML, `<p></p>` untuk paragraf, `<button></button>` untuk membuat button, `<a></a>` sebagai anchor link, `<h1></h1>` sampai `<h6></h6>` untuk header, `<img>` untuk menyisipkan gambar, `<span></span>` untuk span elemen, `<strong></strong>` dan `<em></em>` sebagai penegasan untuk aksesibilitas pengguna, `<style></style>` untuk styling CSS, `<table></table>`, `<td></td>`, `<tr></tr>`, `<th></th>` untuk membuat table dan elemen-elemennya, `<ul></ul>` untuk unordered list,` <ol></ol>` untuk ordered list, dan `<div></div>` untuk membuat divisi bagian elemen.
 
 ### Jelaskan tipe-tipe CSS selector yang kamu ketahui
-elemen (p, h1, body) = Memilih elemen berdasarkan tag
-.class (.nama-class) = Memilih elemen yang memiliki nama class "nama-class"
-.class1.class2 = Memilih elemen yang memiliki kedua class1 dan class2.
-.class1 .class2 = Memilih elemen yang memiliki class2 nya merupakan keturunan class1 (tidak hanya langsung, bisa berupa kakek) (berlaku juga untuk tag)
-elemen1 > elemen2 = Memilih elemen2 yang merupakan turunan langsung (hubungan anak terhadap orangtua) dari elemen1
-#id = Memilih elemen dengan id tertentu
-`*` = Memilih semua elemen
+1. elemen (p, h1, body) = Memilih elemen berdasarkan tag
+2. .class (.nama-class) = Memilih elemen yang memiliki nama class "nama-class"
+3. .class1.class2 = Memilih elemen yang memiliki kedua class1 dan class2.
+4. .class1 .class2 = Memilih elemen yang memiliki class2 nya merupakan keturunan class1 (tidak hanya langsung, bisa berupa kakek) (berlaku juga untuk tag)
+5. elemen1 > elemen2 = Memilih elemen2 yang merupakan turunan langsung (hubungan anak terhadap orangtua) dari elemen1
+6. #id = Memilih elemen dengan id tertentu
+7. `*` = Memilih semua elemen
 
 ### Cara implementasi
 Proses styling CSS pada tugas 5 ini menggunakan framework CSS Bootstrap, serta juga memanfaatkan styling External dan Inline CSS. Login, Register, Todolist dan Add Task memanfaatkan flexbox yang akan meng-align elemen sesuai keinginan kita tanpa harus pusing memikirkan margin. Elemen akan dibagi menjadi beberapa bagian menggunakan `<div></div>` agar bisa disusun menggunakan flexbox. Cards diimplementasikan dengan memanfaatkan syntax dari Bootstrap yang kemudian sedikit dimodifikasi dengan CSS vanilla. Padding, Margin, dan Gap juga diimplementasikan agar elemen tidak saling berhimpitan dan bertabrakan. Sebagai bonus, saya juga mengimplementasikan selector hover dengan menggunakan transisi agar tampil layaknya animasi.

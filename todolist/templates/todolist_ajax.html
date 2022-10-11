@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist with AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script>
+        // AJAX GET without jQuery
+
+        // const container = document.getElementById('container-cards');
+        // const xhttp = new XMLHttpRequest();
+        // xhttp.open('GET', '../show-as-json/');
+        // xhttp.onload = () => {
+        //     const task = JSON.parse(xhttp.responseText);
+        //     console.log(task);
+            
+        //     for (let i = 0; i < task.length; i++) {
+        //         container.innerHTML += `
+            //     <div class="card p-1">
+            //      <div class="card-body d-flex flex-column justify-content-between gap-2">
+            //        <div class="card-content">
+            //          <h5 class="card-title">${task[i].fields.title}</h5>
+            //          <p class="card-text">${task[i].fields.description}</p>
+            //        </div>
+            //        <p class="card-text fst-italic">${task[i].fields.date}</p>
+            //      </div>
+            //    </div>
+        //        `;
+        //     }
+        // }
+        // xhttp.send();
+
+        $(document).ready(() => {
+            $.get('./json', (tasks) => {
+                tasks.forEach((task) => {
+                    $('#container-cards').append(`
+                    <div class="card p-1">
+                        <div class="card-body d-flex flex-column justify-content-between gap-2">
+                            <div class="card-content">
+                                <h5 class="card-title">${task.fields.title}</h5>
+                                <p class="card-text">${task.fields.description}</p>
+                            </div>
+                            <p class="card-text fst-italic">${task.fields.date}</p>
+                        </div>
+                    </div>
+                    `);
+                });
+            });
+
+            $('#form').submit((e) => {
+                e.preventDefault();
+                var date = new Date().toISOString().substr(0, 10);
+                $.ajax({
+                    url: './add',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#form').serialize(),
+                    success: (respond) => {
+                        // console.log(respond)
+                        // $('#modal-input').modal('hide')
+                        $('#container-cards').append(`
+                            <div class="card p-1">
+                                <div class="card-body d-flex flex-column justify-content-between gap-2">
+                                    <div class="card-content">
+                                        <h5 class="card-title">${respond.title}</h5>
+                                        <p class="card-text">${respond.description}</p>
+                                    </div>
+                                    <p class="card-text fst-italic">${date}</p>
+                                </div>
+                            </div>
+                        `);
+                        $('#title').val('');
+                        $('#description').val('');
+                    },
+                    error: () => {
+                        alert("ERROR");
+                    }
+                });
+            });
+
+            $('#title').val('');
+            $('#description').val('');
+        });
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar sticky-top shadow" style="background-color: #47B5FF;">
+        <div class="container-fluid ms-3 me-3">
+          <a class="navbar-brand fs-3 fw-bold" href="#" style="font-family: 'Poppins', sans-serif;">Todolist with AJAX</a>
+          <div class="navigation-buttons">
+            <a class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#modal-input">Add Task</a>
+            <a class="btn btn-danger" href="{% url 'todolist:logout' %}">Logout</a>
+          </div>
+        </div>
+    </nav>
+
+        <div class="container-todolist d-flex flex-column justify-content-between align-items-center">
+       
+            <div class="content-todolist pt-5 pb-5 d-flex flex-column align-items-center">
+                <div class="welcome">
+                    {% if user.is_authenticated %}
+                    <span>Hello, <span class="fst-italic fw-bolder me-1" style="color: lightgreen;">{{ user.get_username }}</span>!</span>
+                    <span>Welcome to your <span style="font-family: 'Poppins', sans-serif;">Todolist!</span></span>
+                    <p style="font-size: 20px;" class="mt-3">Your tasks:</p>
+                    {% endif %}
+                </div>
+
+                <div id="container-cards"></div>
+        
+            </div>
+     
+     
+            <div class="todolist-footer">
+            <span>Made by: {{nama}} - {{npm}}</span>
+            <span>As part of PBP Assignment #6</span>
+            </div>  
+         
+        </div>
+    
+</body>
+<div class="modal fade" id="modal-input" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal-title">Add Your Task!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="form">
+                <div class="modal-body">
+                    
+                        {% csrf_token %}
+                        <div class="input-task d-flex flex-column justify-content-center">
+                            <label for="title" class="form-label">Title:</label>
+                            <input id="title" type="text" name="title" placeholder="Title" value="{{ title }}" class="mb-2">
+                            <label for="description" class="form-label">Description:</label>
+                            <input id="description" type="text" name="description" placeholder="Description" value="{{ description }}" class="mb-5">
+                        </div>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+                </div>
+        </form>
+        </div>
+
+
+    </div>
+</div>
+</html>

@@ -106,7 +106,7 @@
     gap: 30px;
 }
 
-.container-cards {
+.container-cards, #container-cards {
     min-width: 90vw;
     display: flex;
     flex-wrap: wrap;

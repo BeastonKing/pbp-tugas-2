@@ -1,6 +1,7 @@
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
+from django.core import serializers
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +16,6 @@ from todolist.models import Task
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
     list_task = Task.objects.all().filter(user=request.user)
-
     context = {
         'list_task': list_task,
         'nama': 'Bintang Pratama',
@@ -40,6 +40,36 @@ def add_task(request):
 
     return render(request, "addtask.html", {'form':form})
 
+@login_required(login_url='/todolist/login')
+def show_as_json(request):
+    list_task = Task.objects.all().filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", list_task), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def show_todolist_ajax(request):
+    list_task = Task.objects.all().filter(user=request.user)
+    
+    context = {
+        'list_task': list_task,
+        'nama': 'Bintang Pratama',
+        'npm': '2106751373',
+        'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, 'todolist_ajax.html', context)
+
+@login_required(login_url='/todolist/login/')
+def add_task_ajax(request):
+    if (request.method == "POST"):
+        form = TaskForm(request.POST or None)
+        if (form.is_valid()):
+            user = request.user
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            Task.objects.create(user=user, title=title, description=description)
+            return JsonResponse({'title':title,
+                                'description':description
+                                })
+
 def register(request):
     form = UserCreationForm()
 
@@ -60,7 +90,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user) # melakukan login terlebih dahulu
-            response = HttpResponseRedirect(reverse("todolist:show_todolist")) # membuat response
+            response = HttpResponseRedirect(reverse("todolist:show_todolist_ajax")) # membuat response
             response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
             return response
         else:
